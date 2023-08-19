@@ -70,9 +70,7 @@ void APingPongBall::OnPlatformHit(AActor* OverlappedActor, AActor* OtherActor)
 		{
 			// Hitting a wall parallel to platform
 			const float Signum = BallLinearVelocity.Y > 0 ? 1.0f : -1.0f;
-			NewBallLinearVelocity = FVector(3000.0f * -1.0f,
-														  3000.0f * Signum,
-														  BallLinearVelocity.Z);
+			NewBallLinearVelocity = FVector(3000.0f * -1.0f,3000.0f * Signum,BallLinearVelocity.Z);
 		}
 		StaticMeshComponent->SetPhysicsLinearVelocity(NewBallLinearVelocity);
 	}

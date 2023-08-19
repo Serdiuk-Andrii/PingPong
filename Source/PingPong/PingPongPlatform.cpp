@@ -16,6 +16,8 @@ APingPongPlatform::APingPongPlatform()
 
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("Box Collision"));
 	BoxComponent->SetupAttachment(StaticMeshComponent);
+	// For some reason, making the box smaller misplaced the player's camera.
+	// Unfortunately, I wasn't able to solve it before the deadline
 	BoxComponent->SetBoxExtent(FVector(100.f, 600.f, 100.f));
 	BoxComponent->SetCollisionProfileName("PhysicsActor");
 
