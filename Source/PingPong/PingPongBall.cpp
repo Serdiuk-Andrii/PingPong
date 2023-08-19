@@ -34,21 +34,7 @@ void APingPongBall::BeginPlay()
 
 void APingPongBall::OnPlatformHit(AActor* OverlappedActor, AActor* OtherActor)
 {
-	APingPongPlatform* Platform = Cast<APingPongPlatform>(OtherActor);
-	if (Platform)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Green,
-		TEXT("Collision with a platform!"));
-		const FVector BallLinearVelocity = StaticMeshComponent->GetPhysicsLinearVelocity();
-		const float Signum = BallLinearVelocity.Y > 0 ? 1.0f : -1.0f;
-		const FVector NewBallLinearVelocity = FVector(3000.0f * -1.0f,
-													  3000.0f * Signum,
-													  BallLinearVelocity.Z);
-		
-		StaticMeshComponent->SetPhysicsLinearVelocity(NewBallLinearVelocity);
-	}
-	else
-	{
+	
 		const FVector BallLinearVelocity = StaticMeshComponent->GetPhysicsLinearVelocity();
 
 		FBox ActorBoundingBox = OtherActor->GetComponentsBoundingBox();
@@ -73,7 +59,7 @@ void APingPongBall::OnPlatformHit(AActor* OverlappedActor, AActor* OtherActor)
 			NewBallLinearVelocity = FVector(3000.0f * -1.0f,3000.0f * Signum,BallLinearVelocity.Z);
 		}
 		StaticMeshComponent->SetPhysicsLinearVelocity(NewBallLinearVelocity);
-	}
+	
 }
 
 void APingPongBall::StartMoving() const
